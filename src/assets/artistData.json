@@ -1,0 +1,38 @@
+[
+  {
+    "id": "58",
+    "name": "Dyslexic Swing & The Silent Brocoli",
+    "slug": "dyslexic-swing-and-the-silent-brocoli",
+    "location": "Paris, France",
+    "canMove": true,
+    "canCover": true,
+    "equipment": "Matériel d'amplification fourni",
+    "types": ["Jazz", "Guingette", "Swing"],
+    "description": "Créé en 2015 dans l'esprit du Hot Club de France, Dyslexic Swing & The Silent Brocoli re-dynamise le jazz manouche et le swing américain des jump bands avec une jubilation contagieuse et des références solides : le swing de Django et le swag de Grappelli ! Egalement chanteurs, ils vous entrainent dans l'euphorie des années 30-50 en intégrant à leur répertoire les succès indémodables des Andrews Sisters, The Chordettes, Cats & The Fiddle, etc. Dyslexic Swing & The Silent Brocoli dispose du materiel nécéssaire pour sonoriser les espaces de tout type et se déplace partout en France pour animer de nombreux événements : festivals, concerts privés, cocktails. Benjamin Ramòn (guitare, chant), Noémie Le Borgne (violon, chant), Jean Barthomier (guitare, chant), Elaine Beaumont (contrebasse, chant).",
+    "videos": ["url1", "url2", "url3"],
+    "songs": ["song1", "song2", "song3", "song4"],
+    "performances": [
+      {
+        "name": "Dyslexic Swing Duo",
+        "description": "Formation appréciée pour les réunions en petit comité, le DUO s'adapte au format de votre événement : présence musicale discrète ou dialogue amical avec vos invités. Formation : guitare + violon ou duo de guitaristes. Durée : 2 sets de 45 min + pause (230 € par set supplémentaire). Boissons et nourriture appréciées",
+        "numberOfArtists": 2,
+        "length": 120,
+        "startPrice": 780
+      },
+      {
+        "name": "Dyslexic Swing Duo",
+        "description": "Formation appréciée pour les réunions en petit comité, le DUO s'adapte au format de votre événement : présence musicale discrète ou dialogue amical avec vos invités. Formation : guitare + violon ou duo de guitaristes. Durée : 2 sets de 45 min + pause (230 € par set supplémentaire). Boissons et nourriture appréciées",
+        "numberOfArtists": 2,
+        "length": 120,
+        "startPrice": 780
+      },
+      {
+        "name": "Dyslexic Swing Duo",
+        "description": "Formation appréciée pour les réunions en petit comité, le DUO s'adapte au format de votre événement : présence musicale discrète ou dialogue amical avec vos invités. Formation : guitare + violon ou duo de guitaristes. Durée : 2 sets de 45 min + pause (230 € par set supplémentaire). Boissons et nourriture appréciées",
+        "numberOfArtists": 2,
+        "length": 120,
+        "startPrice": 780
+      }
+    ]
+  }
+]

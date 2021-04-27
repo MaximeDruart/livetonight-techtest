@@ -1,13 +1,20 @@
 import React from "react"
-import { Route } from "react-router"
+import { Route, Switch } from "react-router"
 import ArtistPage from "./components/artistPage"
 
 const App = () => {
   return (
     <>
-      <Route path='/groupe-musique-dj/:name'>
-        <ArtistPage />
-      </Route>
+      <Switch>
+        <Route exact path='/'>
+          home
+        </Route>
+        <Route path='/groupe-musique-dj/:name'>
+          <ArtistPage />
+        </Route>
+        <Route path='/groupe-musique-dj/'>all artists</Route>
+        <Route path='*'>404</Route>
+      </Switch>
     </>
   )
 }
