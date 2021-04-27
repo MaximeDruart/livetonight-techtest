@@ -1,6 +1,9 @@
 const theme = {}
 
-theme.colors = {}
+theme.colors = {
+  main: "#3CE295",
+  title: "#484848",
+}
 
 theme.textStyles = {}
 

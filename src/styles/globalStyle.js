@@ -2,17 +2,21 @@ import { createGlobalStyle } from "styled-components"
 
 export default createGlobalStyle`
     @font-face {
-      font-family: "NeueMontrealRegular";
-      font-display : block ;
-      src: url("/fonts/neueRegular.otf");
+      font-family: 'BAHNSCHRIFT';
+      font-weight: 100 900;
+      font-style: normal;
+      font-named-instance:'Regular';
+      font-display: swap;
+      src: url("https://livetonight.s3-eu-west-1.amazonaws.com/font/BAHNSCHRIFT.woff") format("woff");
     }
+
     @font-face {
-      font-family: "NeueMontrealMedium";
-      src: url("/fonts/neueMedium.otf");
-    }
-    @font-face {
-      font-family: "BerlinBold";
-      src: url("/fonts/berlinBold.ttf");
+      font-family: 'Hwt Artz';
+      font-weight: 100 900;
+      font-style: normal;
+      font-named-instance:'Regular';
+      font-display: swap;
+      src: url("https://livetonight.s3-eu-west-1.amazonaws.com/font/HWTARTZ.otf") format("truetype");
     }
 
     /* CSS RESET */
@@ -176,5 +180,35 @@ export default createGlobalStyle`
     body {
       padding: 0;
       margin: 0;
+      font-family: 'BAHNSCHRIFT';
+      font-weight : 200;
+    }
+
+    .headline {
+      font-family : 'Hwt Artz';
+      font-size : 24px;
+      letter-spacing : 0.1rem;
+      color : ${({ theme }) => theme.colors.title};
+
+      &.underline {
+        
+      }
+    }
+
+    .button {
+      padding: 10px;
+      width: 140px;
+      border: 1px solid white;
+      color: white;
+      text-align: center;
+      border-radius: 20px;
+      cursor: pointer;
+      background : none;
+      font-family : 'BAHNSCHRIFT';
+
+      &.contact {
+        background: ${({ theme }) => theme.colors.main};
+          box-shadow : 1px 2px 3px rgb(0 0 0 / 30%);
+      }
     }
 `
