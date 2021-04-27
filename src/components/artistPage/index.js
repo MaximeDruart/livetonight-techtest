@@ -224,7 +224,7 @@ const ArtistPage = () => {
         </div>
       </Modal>
       <Modal isOpen={contactIsOpen} close={() => setContactIsOpen(false)} title='Demande de réservation'>
-        <ContactForm />
+        {/* <ContactForm /> */}
       </Modal>
       <div className='hero'>
         <div className='hero-image'></div>
