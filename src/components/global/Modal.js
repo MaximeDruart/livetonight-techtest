@@ -23,12 +23,12 @@ const StyledModal = styled(motion.div)`
 
   .card {
     width: 500px;
-    height: 700px;
     background: white;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    padding-bottom: 40px;
 
     .banner {
       margin-top: 30px;

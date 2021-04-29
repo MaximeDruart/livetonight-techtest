@@ -180,9 +180,12 @@ export default createGlobalStyle`
     body {
       padding: 0;
       margin: 0;
-      font-family: 'BAHNSCHRIFT';
-      font-weight : 200;
+      font-family: "BAHNSCHRIFT", "sans-serif";
+      font-size: 14px;
+      line-height: 1.4;
+      color: #484848;
     }
+
 
     .headline {
       font-family : 'Hwt Artz';
@@ -208,7 +211,37 @@ export default createGlobalStyle`
 
       &.contact {
         background: ${({ theme }) => theme.colors.main};
-          box-shadow : 1px 2px 3px rgb(0 0 0 / 30%);
+        box-shadow : 1px 2px 3px rgb(0 0 0 / 30%);
+
+      }
+    }
+
+    .label-group {
+      font-weight : 700;
+    }
+
+    .form-control {
+      font-family : 'BAHNSCHRIFT';
+      display: block;
+      width: 100%;
+      height: 36px;
+      border: 1px solid #ebebeb;
+      border-radius: 6px;
+      box-shadow: 1px 2px 3px rgb(0 0 0 / 5%);
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #555555;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+
+      &:focus {
+        border-color: #66afe9;
+        outline: 0;
+        box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 250 / 95%);
       }
     }
 `

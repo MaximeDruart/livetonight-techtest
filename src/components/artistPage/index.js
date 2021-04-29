@@ -189,7 +189,10 @@ const ArtistPage = () => {
   const [artist, setArtist] = useState(null)
   const [loading, setLoading] = useState(true)
   const [songsAreOpen, setSongsAreOpen] = useState(false)
-  const [contactIsOpen, setContactIsOpen] = useState(false)
+  const [contactModal, setContactModal] = useState({
+    isOpen: false,
+    activePerformance: 0,
+  })
 
   useEffect(() => {
     // ici dans un vrai environnement on fetcherait un api plutot qu'un json locale mais l'idée est la même.
@@ -218,13 +221,22 @@ const ArtistPage = () => {
         <div className='song-list-wrapper'>
           <ul className='song-list'>
             {artist.songs.map((song) => (
-              <li className='song'>{song}</li>
+              <li key={song} className='song'>
+                {song}
+              </li>
             ))}
           </ul>
         </div>
       </Modal>
-      <Modal isOpen={contactIsOpen} close={() => setContactIsOpen(false)} title='Demande de réservation'>
-        {/* <ContactForm /> */}
+      <Modal
+        isOpen={contactModal.isOpen}
+        close={() => setContactModal({ ...contactModal, isOpen: false })}
+        title='Demande de réservation'
+      >
+        <ContactForm
+          close={() => setContactModal({ ...contactModal, isOpen: false })}
+          performance={artist.performances[contactModal.activePerformance]}
+        />
       </Modal>
       <div className='hero'>
         <div className='hero-image'></div>
@@ -287,7 +299,7 @@ const ArtistPage = () => {
           <div className='headline'>apercu du répertoire</div>
           <ul>
             {artist.songs.slice(0, 3).map((song) => (
-              <li>{song}</li>
+              <li key={song}>{song}</li>
             ))}
           </ul>
           <div onClick={() => setSongsAreOpen(true)} className='more'>
@@ -316,7 +328,12 @@ const ArtistPage = () => {
                   <div className='text'>A partir de {performance.startPrice}€</div>
                 </div>
               </div>
-              <button onClick={() => setContactIsOpen(true)} className='button contact'>
+              <button
+                onClick={() => {
+                  setContactModal({ activePerformance: index, isOpen: true })
+                }}
+                className='button contact'
+              >
                 Contacter
               </button>
             </div>

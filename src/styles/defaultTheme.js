@@ -1,3 +1,5 @@
+import { css } from "styled-components"
+
 const theme = {}
 
 theme.colors = {
@@ -5,6 +7,13 @@ theme.colors = {
   title: "#484848",
 }
 
-theme.textStyles = {}
+theme.textStyles = {
+  body: {
+    small: css`
+      font-weight: 200;
+      font-size: 12px;
+    `,
+  },
+}
 
 export default theme
