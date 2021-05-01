@@ -70,6 +70,20 @@
         "rating": 5,
         "date": "Mars 2020"
       }
+    ],
+    "questions": [
+      {
+        "q": "Combien de temps à l'avance dois-je vous contacter ?",
+        "a": "Il n'y a pas de date limite ! Evidemment mieux vaut s'y prendre le plus tôt possible pour s'assurer de notre disponibilité et réserver une date."
+      },
+      {
+        "q": "Puis-je vous demander d’apprendre une chanson pour mon événement ?",
+        "a": "Avec plaisir ! Laquelle ? :)"
+      },
+      {
+        "q": "Est-il possible de choisir les chansons qui seront jouées ?",
+        "a": "Notre programme s'adapte à vos besoins. Avec plus d'une centaine de morceaux à notre répertoire, nous sommes à l'écoute de vos préférences pour une prestation sur-mesure ! N'hésitez pas à consulter la liste des morceaux postée sur notre profil."
+      }
     ]
   }
 ]

@@ -69,25 +69,31 @@ const StyledArtistPage = styled.div`
   .artist-page-content {
     /* padding: 0 min(8vw, 260px); */
 
-    margin: 0 auto;
-
     @media (min-width: 768px) {
-      width: 750px;
+      .section {
+        width: 750px;
+      }
     }
 
     @media (min-width: 992px) {
-      width: 970px;
+      .section {
+        width: 970px;
+      }
     }
 
     @media (min-width: 1200px) {
-      width: 1170px;
+      .section {
+        width: 1170px;
+      }
+    }
+
+    .section {
+      margin: 0 auto;
     }
 
     .presentation {
       margin-top: 4vh;
       border: 1px solid red;
-      width: 100%;
-
       .headline {
         margin-bottom: 20px;
       }
@@ -132,7 +138,6 @@ const StyledArtistPage = styled.div`
         }
       }
     }
-
     .songs {
       margin-top: 5vh;
       .headline {
@@ -143,6 +148,23 @@ const StyledArtistPage = styled.div`
           margin-bottom: 5px;
         }
       }
+      .more {
+        color: ${({ theme }) => theme.colors.main};
+        cursor: pointer;
+      }
+    }
+    .qna {
+      margin-top: 5vh;
+      .headline {
+        margin-bottom: 15px;
+      }
+
+      .question {
+        em {
+          font-weight: 700;
+        }
+      }
+
       .more {
         color: ${({ theme }) => theme.colors.main};
         cursor: pointer;
@@ -189,7 +211,6 @@ const StyledArtistPage = styled.div`
       }
     }
     .cagnotte {
-      width: 100%;
       .content {
         width: 100%;
         display: flex;
@@ -230,7 +251,6 @@ const StyledArtistPage = styled.div`
         }
       }
     }
-
     .reviews {
       margin-top: 50px;
       .global-ratings {
@@ -267,13 +287,45 @@ const StyledArtistPage = styled.div`
           margin-bottom: 30px;
 
           .author {
-            width: 15%;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: space-between;
+            width: 20%;
+
+            .author-picture {
+              width: 60px;
+              height: 60px;
+              border-radius: 30px;
+              background: blue;
+              margin-bottom: 5px;
+            }
           }
           .content {
-            width: 85%;
+            width: 80%;
+
+            .text {
+              margin-bottom: 15px;
+            }
+
+            .rating {
+              display: flex;
+              flex-flow: row nowrap;
+              align-items: flex-end;
+              .date {
+                margin-right: 10px;
+              }
+            }
           }
         }
       }
+    }
+    .bottom-line {
+      width: 100%;
+      height: 1px;
+      background: #929292;
+      margin-top: 50px;
+      margin-bottom: 15px;
     }
   }
 
@@ -283,6 +335,22 @@ const StyledArtistPage = styled.div`
     padding: 10px 15px;
     overflow-y: scroll;
   }
+  .questions-list-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 10px 15px;
+    overflow-y: scroll;
+
+    .questions-list {
+      margin-top: 10px;
+      .question {
+        margin-bottom: 15px;
+        em {
+          font-weight: 700;
+        }
+      }
+    }
+  }
 `
 
 const ArtistPage = () => {
@@ -291,6 +359,7 @@ const ArtistPage = () => {
   const [artist, setArtist] = useState(null)
   const [loading, setLoading] = useState(true)
   const [songsAreOpen, setSongsAreOpen] = useState(false)
+  const [questionsAreOpen, setQuestionsAreOpen] = useState(false)
   const [contactModal, setContactModal] = useState({
     isOpen: false,
     activePerformance: 0,
@@ -325,6 +394,17 @@ const ArtistPage = () => {
             {artist.songs.map((song) => (
               <li key={song} className='song'>
                 {song}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Modal>
+      <Modal isOpen={questionsAreOpen} close={() => setQuestionsAreOpen(false)} title='Les questions fréquentes'>
+        <div className='questions-list-wrapper'>
+          <ul className='questions-list'>
+            {artist.questions.map(({ q, a }) => (
+              <li key={q} className='question'>
+                <em>{q}</em> - {a}
               </li>
             ))}
           </ul>
@@ -406,6 +486,15 @@ const ArtistPage = () => {
           </ul>
           <div onClick={() => setSongsAreOpen(true)} className='more'>
             ...plus de morceaux
+          </div>
+        </div>
+        <div className='section qna'>
+          <div className='headline'>Les questions fréquentes</div>
+          <div className='question'>
+            <em>{artist.questions[0].q}</em> - {artist.questions[0].a}
+          </div>
+          <div onClick={() => setQuestionsAreOpen(true)} className='more'>
+            ... toutes les questions fréquentes
           </div>
         </div>
         <div className='section performances'>
@@ -513,6 +602,7 @@ const ArtistPage = () => {
             ))}
           </div>
         </div>
+        <div className='bottom-line'></div>
       </div>
     </StyledArtistPage>
   ) : (
