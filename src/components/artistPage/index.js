@@ -93,7 +93,6 @@ const StyledArtistPage = styled.div`
 
     .presentation {
       margin-top: 4vh;
-      border: 1px solid red;
       .headline {
         margin-bottom: 20px;
       }
@@ -102,18 +101,33 @@ const StyledArtistPage = styled.div`
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        height: 30vh;
+
         .left {
           width: 60%;
-          height: 100%;
+
           .description {
             white-space: pre-line;
+          }
+
+          .videos {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            padding: 0 15px;
+            margin: 10px 0;
+            .video {
+              width: 150px;
+              height: 150px;
+              background: black;
+              cursor: pointer;
+            }
           }
         }
         .right {
           width: 35%;
           height: 100%;
           .practical-infos {
+            margin-bottom: 10px;
             .info-title {
             }
             ul {
@@ -132,7 +146,6 @@ const StyledArtistPage = styled.div`
             }
           }
           .gif {
-            margin-top: 25px;
             width: 100%;
           }
         }
@@ -445,7 +458,11 @@ const ArtistPage = () => {
           <div className='presentation-content'>
             <div className='left'>
               <div className='description'>{artist.description}</div>
-              <div className='videos'></div>
+              <div className='videos'>
+                {artist.videos.map((video) => (
+                  <div key={video} className='video'></div>
+                ))}
+              </div>
             </div>
             <div className='right'>
               <div className='practical-infos'>
