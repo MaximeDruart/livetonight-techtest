@@ -5,6 +5,7 @@ import allArtistsData from "../../assets/artistData.json"
 import Modal from "../global/Modal"
 import StarReview from "./StarReview"
 import ContactForm from "./ContactForm"
+import ToolTip from "../global/ToolTip"
 
 const StyledArtistPage = styled.div`
   width: 100vw;
@@ -66,7 +67,21 @@ const StyledArtistPage = styled.div`
     }
   }
   .artist-page-content {
-    padding: 0 min(8vw, 260px);
+    /* padding: 0 min(8vw, 260px); */
+
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+      width: 750px;
+    }
+
+    @media (min-width: 992px) {
+      width: 970px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 1170px;
+    }
 
     .presentation {
       margin-top: 4vh;
@@ -173,6 +188,93 @@ const StyledArtistPage = styled.div`
         }
       }
     }
+    .cagnotte {
+      width: 100%;
+      .content {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+
+        & > * {
+          padding: 0 10px;
+        }
+
+        .cake-hat {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: space-between;
+          width: 40%;
+
+          .hat {
+            .headline {
+              color: ${({ theme }) => theme.colors.main};
+            }
+          }
+        }
+        .steps {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: space-between;
+          .step {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
+            .number {
+            }
+          }
+        }
+      }
+    }
+
+    .reviews {
+      margin-top: 50px;
+      .global-ratings {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: flex-end;
+        margin-bottom: 20px;
+        .no-of-reviews {
+          margin-left: 9px;
+        }
+      }
+      .categories {
+        display: flex;
+        flex-flow: row nowrap;
+        .category {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: baseline;
+          margin-right: 50px;
+          .text {
+            font-weight: 700;
+            font-size: 14px;
+            margin-right: 5px;
+          }
+        }
+      }
+      .reviews {
+        .review {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 30px;
+
+          .author {
+            width: 15%;
+          }
+          .content {
+            width: 85%;
+          }
+        }
+      }
+    }
   }
 
   .song-list-wrapper {
@@ -248,7 +350,7 @@ const ArtistPage = () => {
             <div className='title'>{artist.name}</div>
             <div className='types'>{artistTypes}</div>
             <div className='reviews'>
-              <StarReview rating={5} />
+              <StarReview rating={artist.reviewsStats.average} />
               <span className='no-of-reviews'>({artist.reviewsStats.count} avis)</span>
             </div>
             <div className='start-price'>à partir de {artist.performances[0].startPrice}€</div>
@@ -325,7 +427,9 @@ const ArtistPage = () => {
                 </div>
                 <div className='stat-item price'>
                   <div className='icon'></div>
-                  <div className='text'>A partir de {performance.startPrice}€</div>
+                  <div className='text'>
+                    A partir de {performance.startPrice}€ <ToolTip>this is a tooltip</ToolTip>
+                  </div>
                 </div>
               </div>
               <button
@@ -339,7 +443,76 @@ const ArtistPage = () => {
             </div>
           ))}
         </div>
-        <div className='cagnotte'></div>
+        <div className='section cagnotte'>
+          <div className='headline'>Cagnotte LiveTonight</div>
+          <div className='content'>
+            <div className='cake-hat'>
+              <div className='cake'>CAKE</div>
+              <div className='hat'>
+                <div className='headline'>{artist.name}</div>
+                <div className='description'>
+                  Solliciter vos invités via un "chapeau digital" pour profiter d'une prestation musicale lors de votre
+                  événement. Le prix final sera fixé après discussion avec le musicien.
+                </div>
+              </div>
+            </div>
+            <div className='steps'>
+              <div className='step'>
+                <div className='number headline'>1.</div>
+                <div className='desc'>Contactez et échangez avec le musicien.</div>
+              </div>
+              <div className='step'>
+                <div className='number headline'>2.</div>
+                <div className='desc'>Partagez le lien de la cagnotte à vos invités.</div>
+              </div>
+              <div className='step'>
+                <div className='number headline'>3.</div>
+                <div className='desc'>Clôturez la cagnotte et profitez de votre soirée en musique !</div>
+              </div>
+            </div>
+            <div className='contact'>Intéressé ? Contactez-nous à l'adresse suivante: booking@livetonight.fr</div>
+          </div>
+        </div>
+        <div className='section reviews'>
+          <div className='headline'>avis</div>
+          <div className='global-ratings'>
+            <StarReview rating={artist.reviewsStats.average} />
+            <span className='no-of-reviews'>
+              {artist.reviewsStats.average.toFixed(1)} - {artist.reviewsStats.count} avis
+            </span>
+          </div>
+          <div className='categories'>
+            <div className='category'>
+              <div className='text'>Performance musicale - {artist.stats.musicalPerformance.toFixed(1)}</div>
+              <ToolTip>Performance musicale</ToolTip>
+            </div>
+            <div className='category'>
+              <div className='text'>Performance scénique - {artist.stats.scenicPerformance.toFixed(1)}</div>
+              <ToolTip>Performance scénique</ToolTip>
+            </div>
+            <div className='category'>
+              <div className='text'>Professionalisme - {artist.stats.professionalism.toFixed(1)}</div>
+              <ToolTip>Professionalisme</ToolTip>
+            </div>
+          </div>
+          <div className='reviews'>
+            {artist.reviews.map((review, index) => (
+              <div key={index} className='review'>
+                <div className='author'>
+                  <div className='author-picture'></div>
+                  <div className='author-name'>{review.author || "Profil Anonyme"}</div>
+                </div>
+                <div className='content'>
+                  <div className='text'>{review.comment}</div>
+                  <div className='rating'>
+                    <div className='date'>{review.date}</div>
+                    <StarReview rating={review.rating} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </StyledArtistPage>
   ) : (

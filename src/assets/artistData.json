@@ -46,11 +46,29 @@
       "count": 9,
       "average": 5
     },
+    "stats": {
+      "musicalPerformance": 5,
+      "scenicPerformance": 5,
+      "professionalism": 5
+    },
     "reviews": [
       {
         "author": null,
         "comment": "Groupe très sympathique. Toujours à notre écoute pour s'adapter selon nos be",
-        "rating": 5
+        "rating": 5,
+        "date": "Mars 2020"
+      },
+      {
+        "author": null,
+        "comment": "Groupe très sympathique. Toujours à notre écoute pour s'adapter selon nos be",
+        "rating": 5,
+        "date": "Mars 2020"
+      },
+      {
+        "author": null,
+        "comment": "Groupe très sympathique. Toujours à notre écoute pour s'adapter selon nos be",
+        "rating": 5,
+        "date": "Mars 2020"
       }
     ]
   }
