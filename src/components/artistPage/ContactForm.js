@@ -68,8 +68,6 @@ const StyledContact = styled.div`
   }
 `
 
-const errors = {}
-
 const ContactForm = ({ close, performance }) => {
   const [logs, setLogs] = useState({
     date: "",
